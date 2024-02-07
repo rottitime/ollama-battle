@@ -5,8 +5,9 @@ export default async function Home() {
   const response = await ollama.chat({
     model: 'llama2',
     messages: [{ role: 'user', content: 'Why is the sky blue?' }],
+    stream: false,
   })
-  console.log(response.message.content)
+  console.log(response.message)
 
   return (
     <main>
