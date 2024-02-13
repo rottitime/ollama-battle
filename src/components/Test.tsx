@@ -1,11 +1,36 @@
 'use client'
+import { useReducer, useState } from 'react'
+import styled from 'styled-components'
+import Chat from './Chat'
 
-import { useState } from 'react'
+type Chat = {
+  user: 'host' | 'guest'
+  message: string
+  time: string
+  context: number[]
+}
 
-// import ollama from 'ollama'
+const initialChat: Chat[] = []
+
+// Container is flex box with children at 50% width
+const Container = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+
+  > div {
+    width: 50%;
+    background: #fff3e8;
+    padding: 10px;
+  }
+`
 
 function Test() {
   const [start, setStart] = useState(false)
+  const [state, dispatch] = useReducer((state: Chat[], action) => {
+    return state
+  }, initialChat)
 
   return (
     <div>
@@ -35,6 +60,11 @@ function Test() {
       >
         {start ? 'Stop' : 'Start'}
       </button>
+      <Container>
+        <Chat title="Guest" />
+
+        <div>2</div>
+      </Container>
     </div>
   )
 }
