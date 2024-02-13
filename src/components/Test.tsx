@@ -6,11 +6,22 @@ import Chat from './Chat'
 type Chat = {
   user: 'host' | 'guest'
   message: string
-  time: string
+  time?: string
   context: number[]
 }
 
-const initialChat: Chat[] = []
+type ChatAction = {
+  type: 'add'
+  chat: Chat
+}
+
+const initialChat: Chat[] = [
+  {
+    user: 'guest',
+    message: 'Hello',
+    context: [],
+  },
+]
 
 // Container is flex box with children at 50% width
 const Container = styled.div`
@@ -28,7 +39,7 @@ const Container = styled.div`
 
 function Test() {
   const [start, setStart] = useState(false)
-  const [state, dispatch] = useReducer((state: Chat[], action) => {
+  const [state, dispatch] = useReducer((state: Chat[], action: ChatAction) => {
     return state
   }, initialChat)
 
