@@ -1,4 +1,4 @@
-type FetchPayload = {
+export type FetchPayload = {
   model: string
   prompt: string
   stream?: boolean
@@ -18,7 +18,7 @@ type FetchResponse = {
   eval_duration: number
 }
 
-export type FetchApi = (payload: FetchPayload) => Promise<FetchResponse>
+export type FetchApi = (payload: Partial<FetchPayload>) => Promise<FetchResponse>
 
 export type ChatState = {
   user: 'host' | 'guest'
