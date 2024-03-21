@@ -1,11 +1,11 @@
-import Test from '@/components/Test'
+import Test from '@/components/Test/Test'
 import ollama from 'ollama'
 
 export default async function Home() {
   const response = await ollama.chat({
     model: 'llama2',
     messages: [{ role: 'user', content: 'Why is the sky blue?' }],
-    stream: false,
+    stream: false
   })
   console.log(response.message)
 
